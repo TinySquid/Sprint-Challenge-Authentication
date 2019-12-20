@@ -14,15 +14,34 @@ describe("Auth-Router", () => {
   //* /register route
   describe("POST /register", () => {
     test("returns 201 status code", () => {
-      //TODO Add test
+      const newUser = { username: "RedMoon15", password: "claDS*123" };
+      const expectedStatusCode = 201;
+
+      return request(server)
+        .post("/api/auth/register")
+        .send(newUser)
+        .expect(expectedStatusCode);
     });
 
     test("returns correct content-type", () => {
-      //TODO Add test
+      const newUser = { username: "RedMoon15", password: "claDS*123" };
+
+      return request(server)
+        .post("/api/auth/register")
+        .send(newUser)
+        .expect("Content-Type", /json/);
     });
 
     test("returns userId matching new user created", () => {
-      //TODO Add test
+      const newUser = { username: "RedMoon15", password: "claDS*123" };
+      const expectedUserId = 1;
+
+      return request(server)
+        .post("/api/auth/register")
+        .send(newUser)
+        .then((res) => {
+          expect(res.body.userId).toEqual(expectedUserId);
+        });
     });
   });
 
