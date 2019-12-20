@@ -34,3 +34,9 @@ code {
   display: flex;
   flex-direction: column;
 }
+
+.joke {
+  margin: 2rem auto;
+  width: 70%;
+  box-shadow: 0 0 3px 1px rgba(50, 50, 50, 0.1);
+}

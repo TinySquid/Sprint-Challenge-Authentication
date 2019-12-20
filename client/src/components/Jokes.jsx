@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 
 import { axiosWithAuth } from "./util/axiosWithAuth";
 
+import Joke from "./Joke";
+
 function Jokes(props) {
   const [jokes, setJokes] = useState(null);
 
@@ -27,9 +29,7 @@ function Jokes(props) {
   return (
     <div className="jokes">
       {jokes.map((joke) => (
-        <div className="joke" key={joke.id}>
-          <p>{joke.joke}</p>
-        </div>
+        <Joke key={joke.id} joke={joke.joke} />
       ))}
     </div>
   );
