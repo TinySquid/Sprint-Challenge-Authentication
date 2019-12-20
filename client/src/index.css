@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.nav-item a {
+  color: black;
+  margin-left: 2rem;
+}
+
+.card-title {
+  font-size: 2rem;
+  text-align: center;
+  padding: 1%;
+}
+
+.login-form {
+  margin: 5rem auto;
+  width: 50%;
+}
+
+.login-form button {
+  width: 100%;
+}
+
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.joke {
+  margin: 2rem auto;
+  width: 70%;
+  box-shadow: 0 0 3px 1px rgba(50, 50, 50, 0.1);
+}
