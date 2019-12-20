@@ -58,6 +58,8 @@ router.post("/login", validateUser, (req, res) => {
           .catch((error) => {
             res.status(500).json({ message: "Invalid username / password combination", error: error });
           });
+      } else {
+        res.status(404).json({ message: "User invalid" });
       }
     })
     .catch((error) => {
