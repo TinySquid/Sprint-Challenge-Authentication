@@ -29,6 +29,7 @@ describe("Auth-Router", () => {
       return request(server)
         .post("/api/auth/register")
         .send(newUser)
+        .expect(201)
         .expect("Content-Type", /json/);
     });
 
@@ -39,6 +40,7 @@ describe("Auth-Router", () => {
       return request(server)
         .post("/api/auth/register")
         .send(newUser)
+        .expect(201)
         .then((res) => {
           expect(res.body.userId).toEqual(expectedUserId);
         });
@@ -48,15 +50,54 @@ describe("Auth-Router", () => {
   //* /login route
   describe("POST /login", () => {
     test("returns 200 status code", () => {
-      //TODO Add test
+      const newUser = { username: "RedMoon15", password: "claDS*123" };
+      const existingUser = { username: "RedMoon15", password: "claDS*123" };
+
+      const expectedStatusCode = 200;
+
+      return request(server)
+        .post("/api/auth/register")
+        .send(newUser)
+        .then(() => {
+          return request(server)
+            .post("/api/auth/login")
+            .send(existingUser)
+            .expect(expectedStatusCode);
+        });
     });
 
     test("returns correct content-type", () => {
-      //TODO Add test
+      const newUser = { username: "RedMoon15", password: "claDS*123" };
+      const existingUser = { username: "RedMoon15", password: "claDS*123" };
+
+      return request(server)
+        .post("/api/auth/register")
+        .send(newUser)
+        .then(() => {
+          return request(server)
+            .post("/api/auth/login")
+            .send(existingUser)
+            .expect(200)
+            .expect("Content-Type", /json/);
+        });
     });
 
     test("returns a JWT", () => {
-      //TODO Add test
+      const newUser = { username: "RedMoon15", password: "claDS*123" };
+      const existingUser = { username: "RedMoon15", password: "claDS*123" };
+
+      return request(server)
+        .post("/api/auth/register")
+        .send(newUser)
+        .then(() => {
+          return request(server)
+            .post("/api/auth/login")
+            .send(existingUser)
+            .expect(200)
+            .then((res) => {
+              expect(res.body.token).toBeDefined();
+            });
+        });
     });
   });
 });
